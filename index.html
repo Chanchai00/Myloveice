@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=768, height=1024, initial-scale=1.0">
+    <title>ครบรอบ 1 ปีสุดพิเศษ 💕</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Prompt', sans-serif;
+            background: linear-gradient(135deg, #ffccd5, #ff8fab, #ffb6c1);
+            background-size: 200% 200%;
+            animation: gradientBackground 10s ease infinite;
+            width: 768px;
+            height: 1024px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            padding: 40px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: #ff3366;
+            margin-bottom: 20px;
+            animation: bounceIn 1.5s ease;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            font-size: 1.5em;
+            margin: 20px 0;
+            color: #fff;
+            animation: fadeIn 2s ease-in;
+        }
+
+        .heart-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .heart {
+            font-size: 5em;
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            animation: pulse 1.5s infinite alternate;
+            filter: drop-shadow(0 0 10px rgba(255, 0, 128, 0.7));
+        }
+
+        .heart:hover {
+            transform: scale(1.2);
+            animation-play-state: paused;
+        }
+
+        .heart::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+            top: 0;
+            left: 0;
+            opacity: 0;
+            border-radius: 50%;
+            transition: opacity 0.3s ease;
+        }
+
+        .heart:hover::before {
+            opacity: 0.5;
+        }
+
+        .explode {
+            animation: explode 0.8s forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(4);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(8);
+                opacity: 0;
+            }
+        }
+
+        .click-count {
+            font-size: 1.6em;
+            margin-top: 20px;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 2s ease-in;
+        }
+
+        #count {
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff3366, #ff9999);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            padding: 0 8px;
+            font-size: 1.2em;
+        }
+
+        /* Floating bubbles */
+        .bubbles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            animation: float 4s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100%) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* More animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); opacity: 1; }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bubbles" id="bubbles"></div>
+    
+    <div class="container">
+        <h1>🎉 สุขสันต์วันครบรอบ 1 ปีนะไออ้วนน้ำแข็ง 🎉</h1>
+        <p>ขอบคุณที่อยู่เคียงข้างกันมาเสมอ รักไออ้วนมากเลยนะ 💕</p>
+        
+        <div class="heart-container">
+            <span class="heart">💖</span>
+        </div>
+        
+        <p class="click-count">กดหัวใจให้เค้าหน่อย <span id="count">0</span> ครั้ง</p>
+    </div>
+    
+    <script>
+        // Create bubbles in the background
+        const bubblesContainer = document.getElementById('bubbles');
+        const numBubbles = 20;
+        
+        for (let i = 0; i < numBubbles; i++) {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+            
+            // Random size between 10px and 40px
+            const size = Math.random() * 30 + 10;
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            
+            // Random position
+            bubble.style.left = `${Math.random() * 100}%`;
+            
+            // Random start time
+            const delay = Math.random() * 10;
+            bubble.style.animation = `float ${4 + Math.random() * 6}s linear ${delay}s infinite`;
+            
+            // Random transparency
+            bubble.style.opacity = Math.random() * 0.6 + 0.2;
+            
+            bubblesContainer.appendChild(bubble);
+        }
+        
+        // Heart click interactions
+        let count = 0;
+        const heart = document.querySelector(".heart");
+        const countDisplay = document.getElementById("count");
+        
+        heart.addEventListener("click", () => {
+            count++;
+            countDisplay.textContent = count;
+            
+            // Create a temporary heart that flies up and fades
+            const flyingHeart = document.createElement('span');
+            flyingHeart.textContent = '💖';
+            flyingHeart.style.position = 'absolute';
+            flyingHeart.style.fontSize = '1.5em';
+            flyingHeart.style.pointerEvents = 'none';
+            
+            // Random position around the main heart
+            const angle = Math.random() * Math.PI * 2;
+            const distance = 20;
+            const x = Math.cos(angle) * distance;
+            const y = Math.sin(angle) * distance;
+            
+            flyingHeart.style.transform = `translate(${x}px, ${y}px)`;
+            
+            // Add animation
+            flyingHeart.style.animation = 'flyUp 1s forwards';
+            flyingHeart.style.opacity = '1';
+            
+            document.querySelector('.heart-container').appendChild(flyingHeart);
+            
+            // Remove the flying heart after animation
+            setTimeout(() => {
+                flyingHeart.remove();
+            }, 1000);
+            
+            // Scale the main heart
+            let scale = 1 + count * 0.05;
+            heart.style.transform = `scale(${scale})`;
+            
+            if (count >= 7) {
+                // Heart explosion effect
+                heart.classList.add("explode");
+                
+                setTimeout(() => {
+                    window.location.href = "video.html"; // Go to video page
+                }, 1000);
+            }
+        });
+        
+        // Add an animation style for the flying hearts
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes flyUp {
+                0% {
+                    transform: translate(0, 0) scale(1);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translate(calc(${Math.random() * 100 - 50}px), -100px) scale(0.5);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
